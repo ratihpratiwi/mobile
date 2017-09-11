@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Laporan Pengiriman Ekspor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-card (click)="openDetailPage1()" *ngFor="let item of export1">
+    <img src="assets/img/paper.jpg"/>
+    <div class="card-title">Total Quantity {{item.company_name}}</div>
+    <div class="card-subtitle">{{item.data|total:'delivery_quantity'|async}} ton</div>
+  </ion-card>
+  <ion-card (click)="openDetailPage1()" *ngFor="let item of export1">
+    <img src="assets/img/paper.jpg"/>
+    <div class="card-title">Rata - rata Harga {{item.company_name}}</div>
+    <div class="card-subtitle">{{item.data|totalhpp:'avg':'delivery_quantity'|async}} ton</div>
+  </ion-card>
+</ion-content>
+

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Request order Data</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- <button ion-item *ngFor="let item of requestApprovalData"> -->
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of requestApprovalData">
+      <ion-thumbnail item-start>
+        <img src="assets/img/administrator.png">
+      </ion-thumbnail>
+      <h2>{{item.department_name}}</h2>
+      <p>{{item.request_date}} • {{item.trn_reqo_mst_no}}</p>
+      <button ion-button clear item-end (click)="openDetailPage($event,item.trn_reqo_mst_no)">Detail</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

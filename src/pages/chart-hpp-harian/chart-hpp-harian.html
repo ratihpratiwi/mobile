@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Chart
+    </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="viewState">
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <div *ngFor="let item of hpp">
+    <ion-toolbar>
+      <ion-title>Data Harian</ion-title>
+    </ion-toolbar>
+    <canvas #barCanvas baseChart [datasets]="item.data"
+    [labels]="item.labels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'line'"></canvas>
+  </div>
+</ion-content>

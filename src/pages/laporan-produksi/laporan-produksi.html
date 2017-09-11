@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Laporan Produksi</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="card-background-page">
+  <ion-card (click)="openDetailPage1()" *ngFor="let item of produksi">
+    <img src="assets/img/paper.jpg"/>
+    <div class="card-title">Laporan Produksi Harian {{item.company}}</div>
+    <div class="card-subtitle">{{item.data|total:'weight'|async}} ton</div>
+  </ion-card>
+  <ion-card (click)="openDetailPage2()" *ngFor="let item of produksi_blnan">
+    <img src="assets/img/paper.jpg"/>
+    <div class="card-title">Laporan Produksi Bulanan {{item.company}}</div>
+    <div class="card-subtitle"> {{item.data1|total:'total_weight'|async}} ton</div>
+  </ion-card>
+</ion-content>

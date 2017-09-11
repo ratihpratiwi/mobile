@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Laporan Pengiriman Sales</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="card-background-page">
+  <ion-card (click)="openDetailPage1()" *ngFor="let item of avg_price_bulanan">
+    <img src="assets/img/paper.jpg"/>
+    <div class="card-title">Total Harga Roll {{item.company}}</div>
+    <div class="card-subtitle">{{item.data|total:'average_price'|async}} ton</div>
+  </ion-card>
+  <ion-card (click)="openDetailPage2()">
+    <img src="assets/img/paper.jpg"/>
+    <div class="card-title">Total Outstanding</div>
+    <div class="card-subtitle">{{outstanding|total:'total_outstanding'|async}} ton</div>
+  </ion-card>
+</ion-content>

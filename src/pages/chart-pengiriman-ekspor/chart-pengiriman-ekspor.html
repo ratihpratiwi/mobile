@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pengiriman Ekspor
+    </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="viewState">
+    <ion-segment-button value="chart">
+      Chart
+    </ion-segment-button>
+    <ion-segment-button value="data">
+      Data
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <!--<ion-title> Total Pengiriman</ion-title>-->
+  <div [(ngSwitch)]="viewState" *ngFor="let item1 of export1">
+    <div *ngSwitchCase="'chart'">
+    <canvas #barCanvas baseChart [datasets]="item1.data"
+            [labels]="item1.labels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'line'"></canvas>
+
+      <ion-title>Rata - rata Harga</ion-title>
+      <div *ngFor="let item of pengirimanAvgEks">
+        <canvas #barCanvas baseChart [datasets]="item.data"
+                [labels]="item.labels" [options]="barChartOptions" [legend]="barChartLegend"
+                [chartType]="'line'"></canvas>
+      </div>
+    </div>
+    <ion-list *ngSwitchCase="'data'">
+
+      <ion-item *ngFor="let item of dataPengiriman?.export">
+        <ion-avatar item-start>
+          <img src="assets/img/person-flat.png">
+        </ion-avatar>
+        <h2>{{item.company_name}}</h2>
+        <h3>Tgl Kirim • {{item.delivery_date}}</h3>
+        <h3>Qty • {{item.delivery_quantity}}</h3>
+        <h3>Avg Harga • {{item.avg}}</h3>
+      </ion-item>
+    </ion-list>
+    </div>
+</ion-content>

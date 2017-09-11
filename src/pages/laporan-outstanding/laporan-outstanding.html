@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Laporan Outstanding</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of outstanding">
+      <ion-avatar item-start>
+        <img src="assets/img/person-flat.png">
+      </ion-avatar>
+      <h2>Area • {{item.delivery_province}}</h2>
+      <h3>Rata-rata Harga • {{item.average_price}}</h3>
+      <h3>Tonase • {{item.total_outstanding}}</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>

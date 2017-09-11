@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detail Requested</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item>
+    <ion-label label>Item</ion-label>
+    <ion-note item-end>{{requestItem.mst_mtrl_name}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label label>Supplier</ion-label>
+    <ion-note item-end>{{requestItem.mst_supplier_name}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label label>Quantity</ion-label>
+    <ion-note item-end>{{requestItem.trn_reqo_dtl_qty}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label label>Unit</ion-label>
+    <ion-note item-end>{{requestItem.unit.mst_ref_name}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label label>Currency</ion-label>
+    <ion-note item-end>{{requestItem.currency.currency_code}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label label>Unit Price</ion-label>
+    <ion-input type="number" [(ngModel)]="requestItem.est_unit_price"></ion-input>
+  </ion-item>
+</ion-content>
+

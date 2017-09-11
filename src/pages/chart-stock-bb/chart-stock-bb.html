@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Stock Bahan Baku</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of stock">
+      <ion-avatar item-start>
+        <img src="assets/img/person-flat.png">
+      </ion-avatar>
+      <h2>Material • {{item.mst_mtrl_name}}</h2>
+      <h3>Gudang• {{item.wh}}</h3>
+      <h3>Stock • {{item.stock}} ton</h3>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pengiriman Lokal
+    </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="viewState">
+    <ion-segment-button value="chart">
+      Chart
+    </ion-segment-button>
+    <ion-segment-button value="data">
+      Data
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+
+  <div [(ngSwitch)]="viewState" *ngFor="let item1 of pengiriman">
+
+    <div *ngSwitchCase="'chart'">
+      <canvas #barCanvas baseChart [datasets]="item1.data"
+              [labels]="item1.labels" [options]="barChartOptions" [legend]="barChartLegend"
+              [chartType]="'line'"></canvas>
+      <ion-item>Rata - rata Harga</ion-item>
+      <div *ngFor="let item of pengirimanAvg">
+        <canvas #barCanvas baseChart [datasets]="item.data"
+                [labels]="item.labels" [options]="barChartOptions" [legend]="barChartLegend"
+                [chartType]="'line'"></canvas>
+      </div>
+    </div>
+    <ion-list *ngSwitchCase="'data'">
+      <ion-item *ngFor="let item2 of dataPengiriman?.pengiriman">
+        <ion-avatar item-start>
+          <img src="assets/img/person-flat.png">
+        </ion-avatar>
+        <h2>{{item2.company_name}}</h2>
+        <h3>Tgl Kirim • {{item2.delivery_date}}</h3>
+        <h3>Qty • {{item2.delivery_quantity}}</h3>
+        <h3>Avg Harga • {{item2.avg}}</h3>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

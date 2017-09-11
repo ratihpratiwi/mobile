@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Chart
+    </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="viewState">
+
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <div *ngFor="let item of produksi_blnan">
+    <ion-toolbar>
+      <ion-title>{{item.company}}</ion-title>
+    </ion-toolbar>
+    <canvas #barCanvas baseChart [datasets]="item.data"
+            [labels]="item.labels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'line'"></canvas>
+  </div>
+</ion-content>

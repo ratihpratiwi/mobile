@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Purchase Order Detail </ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="pocdetail">
+      <ion-segment-button value="master">
+        Master
+      </ion-segment-button>
+      <ion-segment-button value="detail">
+        Details
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div [(ngSwitch)]="pocdetail">
+    <ion-list *ngSwitchCase="'master'">
+      <ion-item>
+        <ion-icon name='contact' item-start></ion-icon>
+        Customer
+        <ion-note item-end>
+          {{pocdetailApprovalData?.customer?.mst_customer_name}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='calendar' item-start></ion-icon>
+        Delivery Date
+        <ion-note item-end>
+          {{pocdetailApprovalData?.delivery_date|date:shortDate}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='document' item-start></ion-icon>
+        PO Number
+        <ion-note item-end>
+          {{pocdetailApprovalData?.trn_po_cust_mst_no}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='logo-buffer' item-start></ion-icon>
+        Quantity (Kg)
+        <ion-note item-end>
+          {{pocdetailApprovalData?.trn_po_cust_mst_required_quantity}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='logo-buffer' item-start></ion-icon>
+        Term
+        <ion-note item-end>
+          {{pocdetailApprovalData?.term|ref|async}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='logo-usd' item-start></ion-icon>
+        Currency
+        <ion-note item-end>
+          {{pocdetailApprovalData?.curr_id|currencyLabel|async}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='calendar' item-start></ion-icon>
+        PO Date
+        <ion-note item-end>
+          {{pocdetailApprovalData?.po_date|date:shortDate}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='calendar' item-start></ion-icon>
+        Valid To
+        <ion-note item-end>
+          {{pocdetailApprovalData?.valid_to|date:shortDate}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='logo-usd' item-start></ion-icon>
+        PPN
+        <ion-icon name='checkmark' item-end color="primary" *ngIf="pocdetailApprovalData?.ppn"></ion-icon>
+        <ion-icon name='close' item-end color="danger" *ngIf="!pocdetailApprovalData?.ppn"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'detail'">
+      <ion-card *ngFor="let item of pocdetailApprovalData?.details">
+        <ion-item >
+          <ion-label> Category</ion-label>
+          <ion-note item-end>{{item.category.name}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>GSM</ion-label>
+          <ion-note item-end>{{item.gsm}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Quanity</ion-label>
+          <ion-note item-end>{{item.trn_po_cust_dtl_quantity}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Unit Price</ion-label>
+          <ion-input type="number" [(ngModel)]="item.trn_po_cust_dtl_unit_price"></ion-input>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+  <ion-item>
+    <ion-label>Approve</ion-label>
+    <ion-toggle color="primary" checked="false" (ionChange)="statusApprovalChanged($event)"></ion-toggle>
+  </ion-item>
+  <button ion-button color="twitter" block (click)="simpan($event,pocdetailApprovalData)">Simpan</button>
+</ion-content>

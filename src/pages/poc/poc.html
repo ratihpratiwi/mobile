@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title>Purchase Order Customer</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- <button ion-item *ngFor="let item of requestApprovalData"> -->
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of pocApprovalData">
+      <ion-thumbnail item-start>
+        <img src="assets/img/administrator.png">
+      </ion-thumbnail>
+      <h2>{{item.company}}</h2>
+      <p>{{item.mst_customer_name}} • {{item.trn_po_cust_mst_no}}</p>
+      <button ion-button clear item-end (click)="openDetailPage($event,item.trn_po_cust_mst_id)">Detail</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

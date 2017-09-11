@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Request Order Detail Data</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="rqodetails">
+      <ion-segment-button value="detail">
+        Details
+      </ion-segment-button>
+      <ion-segment-button value="approval">
+        Approval Data
+      </ion-segment-button>
+      <ion-segment-button value="history">
+        History
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="cards-bg">
+  <div [ngSwitch]="rqodetails">
+    <ion-list *ngSwitchCase="'detail'">
+      <ion-card *ngFor="let item of requestdetailApprovalData?.details">
+        <ion-card-content>
+          <ion-item>
+            <h1> {{item.mst_mtrl_name}}</h1>
+            <h3> Harga • {{item.est_unit_price}}</h3>
+            <h3> {{item.trn_reqo_dtl_note}}</h3>
+            <h3> Quantity • {{item.trn_reqo_dtl_qty}}</h3>
+            <button ion-button clear item-end (click)="openDetailPage($event,item)">View</button>
+          </ion-item>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="{{item.colorPending}}" (click)="statusApprovalPending($event, item)">
+              Pending
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="{{item.colorReject}}" (click)="statusApprovalReject($event, item)">
+              Reject
+            </button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button clear small color="{{item.colorApprove}}" (click)="statusApprovalApprove($event, item)">
+              Approve
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <h2>Total: {{requestdetailApprovalData?.details|sum:"rqo"}}</h2>
+        </ion-item>
+      </ion-card>
+      <button ion-button color="twitter" block (click)="simpan($event,requestdetailApprovalData)">Simpan</button>
+    </ion-list>
+    <ion-list *ngSwitchCase="'approval'">
+      <ion-item>
+        <ion-label> Departmen</ion-label>
+        <ion-note item-end>{{requestdetailApprovalData.department_name}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Request Date</ion-label>
+        <ion-note item-end>{{requestdetailApprovalData.trn_reqo_mst_date}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Expected Date</ion-label>
+        <ion-note item-end>{{requestdetailApprovalData.trn_reqo_mst_expected_date}}</ion-note>
+      </ion-item>
+      <ion-card>
+        <ion-item>
+          <h2>Total: {{requestdetailApprovalData?.details|sum:"rqo"}}</h2>
+
+        </ion-item>
+      </ion-card>
+    </ion-list>
+    <ion-list *ngSwitchCase="'history'">
+      <ion-list-header>
+        Update History
+      </ion-list-header>
+      <ion-item *ngFor="let item of requestdetailApprovalData.updated">{{item.created_at}} • {{item.employee_id}}
+      </ion-item>
+      <ion-list>
+        <ion-list-header>
+          Approval Person
+        </ion-list-header>
+        <ion-item *ngFor="let item of requestdetailApprovalData.approvals">{{item.approve_name}} •
+          {{item.approved_date}}
+        </ion-item>
+      </ion-list>
+    </ion-list>
+  </div>
+</ion-content>

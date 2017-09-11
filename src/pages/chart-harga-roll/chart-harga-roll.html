@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Chart Harga Roll PM 1
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngFor="let item of avg_price_bulanan">
+    <ion-toolbar>
+      <ion-title>{{item.company}}</ion-title>
+    </ion-toolbar>
+     <canvas #barCanvas baseChart [datasets]="item.data"
+                     [labels]="item.labels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="'line'"></canvas>
+  </div>
+</ion-content>
