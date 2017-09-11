@@ -62,7 +62,12 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 
-
+declare var window;
+export class MyErrorHandler implements ErrorHandler {
+  handleError(err: any): void {
+    window.Ionic.handleNewError(err);
+  }
+}
 export function getAuthHttp(http) {
   return new AuthHttp(new AuthConfig({
     headerPrefix: "JWT",
@@ -115,7 +120,7 @@ export function getAuthHttp(http) {
   providers: [IonicStorageModule,
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }, {
+    { provide: ErrorHandler, useClass: MyErrorHandler }, {
       provide: AuthHttp,
       useFactory: getAuthHttp,
       deps: [Http]
