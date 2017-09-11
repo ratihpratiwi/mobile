@@ -14,8 +14,11 @@ transform(data: any, column1: any, column2: any, args) {
       totalweight += item[column2];
   }
   const promise = new Promise((resolve, reject) => {
-    console.log(totalprice/totalweight)
-    resolve(totalprice/totalweight);
+    if(totalprice==0 && totalweight==0){
+      resolve(0);
+    }else{
+      resolve((totalprice/totalweight).toFixed(2));
+    }
 
   });
   return promise;
