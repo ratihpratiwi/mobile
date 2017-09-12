@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import * as _ from 'underscore/underscore';
 import {UrlMasterProvider} from '../../providers/url-master/url-master';
 
 @Injectable()
