@@ -65,7 +65,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 declare var window;
 export class MyErrorHandler implements ErrorHandler {
   handleError(err: any): void {
-    window.Ionic.handleNewError(err);
+    // window.Ionic.handleNewError(err);
   }
 }
 export function getAuthHttp(http) {
