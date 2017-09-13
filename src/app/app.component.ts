@@ -3,7 +3,7 @@ import {FCM} from '@ionic-native/fcm';
 import {Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {DashboardMenuPage} from "../pages/dashboard-menu/dashboard-menu";
+import {LoginPage} from "../pages/login/login";
 import {ProfilePage} from "../pages/profile/profile";
 import {TabsPage} from "../pages/tabs/tabs";
 declare var FCMPlugin;
@@ -11,7 +11,7 @@ declare var FCMPlugin;
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage: any = LoginPage;
 
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private fcm: FCM) {
     platform.ready().then(() => {
