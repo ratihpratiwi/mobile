@@ -63,7 +63,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 declare var window;
-export class MyErrorHandler implements ErrorHandler {
+export class MyErrorHandler implements IonicErrorHandler {
   handleError(err: any): void {
     // window.Ionic.handleNewError(err);
   }
