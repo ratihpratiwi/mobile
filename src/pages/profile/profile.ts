@@ -16,14 +16,11 @@ export class ProfilePage {
 
   ngOnInit(): void {
     this.storage.get("user").then((val) => {
-
-
       this.profileProvider.getProfile(val.employeeId).subscribe(res=>{
        this.user = Object.assign(res,val)
       })
       console.log(this.user)
     })
-
   }
   logout(){
     this.storage.remove("appToken");
