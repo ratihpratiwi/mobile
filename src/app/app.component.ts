@@ -11,7 +11,7 @@ declare var FCMPlugin;
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = LoginPage;
+  rootPage: any = TabsPage;
 
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private fcm: FCM) {
     platform.ready().then(() => {
