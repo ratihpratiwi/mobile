@@ -38,7 +38,7 @@ export class LoginPage {
             buttons: ['OK']
           });
           console.log(result)
-          alert.present()
+          alert.present();
         })
     }
     }
