@@ -30,15 +30,16 @@ export class LoginPage {
         this.storage.set("user", result.user);
         this.navCtrl.push(TabsPage)
         console.log(res)
+      });
+        this.loginService.login(loginData).subscribe(res => {
+          var result = res.json();
           let alert = this.alertCtrl.create({
-            title: result.error,
+            title: "msg"+ result.errorHandler,
             buttons: ['OK']
           });
-        console.log(result.error)
+          console.log(result)
           alert.present()
-      });
-
+        })
     }
-
     }
 }
