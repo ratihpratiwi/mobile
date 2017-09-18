@@ -5,6 +5,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {LoginService} from '../../providers/login-service';
 import { AlertController } from 'ionic-angular';
+import {log} from "util";
 
 
 @Component({
@@ -31,15 +32,13 @@ export class LoginPage {
         this.navCtrl.push(TabsPage)
         console.log(res)
       });
-        this.loginService.login(loginData).subscribe(res => {
-          var result = res.json();
-          let alert = this.alertCtrl.create({
-            title: "msg"+ result.errorHandler,
-            buttons: ['OK']
-          });
-          console.log(result)
-         alert.present();
-        })
     }
+    this.loginService.login(loginData).subscribe(res => {
+      let alert = this.alertCtrl.create({
+        title: "pesan: "+ res,
+        buttons: ['Cancel']
+      });
+      alert.present();
+    })
     }
 }

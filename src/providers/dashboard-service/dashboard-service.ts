@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DashboardServiceProvider {
-  private headers = new Headers({'precise-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55Q29kZSI6IjAxIiwibGFzdFBhc3NDaGFuZ2UiOiIyMDE3LTA4LTAxIDAwOjAwOjAwLjAiLCJjb21wYW55X2lkIjoyMiwiZm90byI6IiIsInVzZXJfaWQiOjI5LCJpcEFkZHJlc3MiOiIwOjA6MDowOjA6MDowOjEiLCJ2YWxpZFVudGlsIjoiMjAxNy0wOS0xNVQwODozMTozMy4wNDIrMDc6MDAiLCJlbXBsb3llZUlkIjoyOTIsImNvbXBhbnkiOiJQVC4gTW91bnQgRHJlYW1zIEluZG9uZXNpYSAxIiwiZnVsbG5hbWUiOiJJbmRyYSBTdXJ5YXdhbiIsInVzZXJuYW1lIjoiaW5kcmEifQ.nmRKnN6vUrA3KvpxcVO9bSEIdVJtD1GJVn9chXejEPU'});
+  private headers = new Headers({'precise-token': UrlMasterProvider.token1});
   private chartUrl = UrlMasterProvider.urlAPI + '/api/report/dashboard_tile/';
   private pengirimanUrl = UrlMasterProvider.urlAPI + '/api/report/dashboard_tile?query_type=pengiriman';
   private hargaRollUrl = UrlMasterProvider.urlAPI + '/api/report/dashboard_tile/monthly_roll?intervalMonth1=5&&intervalMonth2=5';

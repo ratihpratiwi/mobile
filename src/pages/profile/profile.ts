@@ -19,7 +19,6 @@ export class ProfilePage {
       this.profileProvider.getProfile(val.employeeId).subscribe(res=>{
        this.user = Object.assign(res,val)
       })
-      console.log(this.user)
     })
   }
   logout(){
