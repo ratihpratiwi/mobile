@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import {UrlMasterProvider} from '../../providers/url-master/url-master';
 import 'rxjs/add/operator/toPromise';
 

@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import { IonicApp, IonicModule} from 'ionic-angular'; //IonicErrorHandler
 import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -59,6 +59,7 @@ import { TotalPipe } from '../pipes/total/total';
 import { TotalhppPipe } from '../pipes/totalhpp/totalhpp';
 //chart
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import {Push} from "@ionic-native/push";
 
 
 
@@ -75,7 +76,6 @@ export function getAuthHttp(http) {
     globalHeaders: [{ 'Accept': 'application/json' }],
     tokenGetter: (() => JSON.parse(window.localStorage.getItem("id_token"))),
   }), http);
-
 }
 
 @NgModule({
@@ -120,6 +120,7 @@ export function getAuthHttp(http) {
   providers: [IonicStorageModule,
     StatusBar,
     SplashScreen,
+    Push,
     { provide: ErrorHandler, useClass: MyErrorHandler }, {
       provide: AuthHttp,
       useFactory: getAuthHttp,

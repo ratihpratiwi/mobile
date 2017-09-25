@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {RequestDetailService} from '../../providers/request-detail-service';
 import {RequestNavigatePage}from "../request-navigate/request-navigate";
 import {NavController, NavParams} from 'ionic-angular';
-import * as _ from 'underscore/underscore';
 @Component({
   selector: 'page-request-order-detail',
   templateUrl: 'request-order-detail.html'
@@ -10,8 +9,6 @@ import * as _ from 'underscore/underscore';
 export class RequestOrderDetailPagePage implements OnInit {
   requestdetailApprovalData: any;
   requestApprovalData: any;
-  requestdetailNavigate: any;
-  simpanApprovalRqo: any;
   rqodetails: string = "detail";
   colorPending: string = "danger";
   colorReject: string = "danger";

@@ -4,19 +4,22 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-list >
-    <ion-item>
-      <ion-label fixed>Username</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="data.username" ></ion-input>
-    </ion-item>
+  <form #form="ngForm" (ngSubmit)="loginHandler(data)">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Username</ion-label>
+        <ion-input name="usernameTxt" type="text" value="" [(ngModel)]="data.username"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label fixed>Password</ion-label>
-      <ion-input type="password" value="" [(ngModel)]="data.password" ></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input name="passwordTxt" type="password" value="" [(ngModel)]="data.password"></ion-input>
+      </ion-item>
+    </ion-list>
 
-  <div padding>
-    <button ion-button color="primary" block (click) = "loginHandler(data)">Sign In</button>
-  </div>
+    <div padding>
+      <button name="submitBtn" ion-button color="primary" block type="submit" (click)="presentLoading()">Sign In</button>
+    </div>
+  </form>
+
 </ion-content>

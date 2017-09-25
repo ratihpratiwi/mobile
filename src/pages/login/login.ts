@@ -5,8 +5,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {LoginService} from '../../providers/login-service';
 import { AlertController } from 'ionic-angular';
-import {log} from "util";
-
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -17,7 +16,7 @@ export class LoginPage {
   msg: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginService,
-              private storage: Storage, public alertCtrl: AlertController) {
+              private storage: Storage, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   }
 
   loginHandler(loginData) {
@@ -33,12 +32,20 @@ export class LoginPage {
         console.log(res)
       });
     }
-    this.loginService.login(loginData).subscribe(res => {
-      let alert = this.alertCtrl.create({
-        title: "pesan: "+ res,
-        buttons: ['Cancel']
-      });
-      alert.present();
-    })
+    // this.loginService.login(loginData).subscribe(res => {
+    //   let alert = this.alertCtrl.create({
+    //     title: "pesan: "+ res,
+    //     buttons: ['Cancel']
+    //   });
+    //   alert.present();
+    // })
     }
+  presentLoading() {
+    this.loadingCtrl.create({
+      content: 'Please wait...',
+      duration: 3000,
+      dismissOnPageChange: true
+    }).present();
+  }
+
 }

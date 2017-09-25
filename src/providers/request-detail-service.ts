@@ -10,7 +10,7 @@ export class RequestDetailService {
   private headers = new Headers({ 'precise-token': UrlMasterProvider.token1 });
   private requestdetailUrl = UrlMasterProvider.urlAPI + '/api/purchase/approval/approval_request_order?query_type=approval_rqo&trn_reqo_mst_id=';
   private saveUrl = UrlMasterProvider.urlAPI + '/mobile/request_order/save_approval/'
-  private put(e: any) { }
+  // private put(e: any) { }
   results: any;
   constructor(private http: Http) {
   }
@@ -21,7 +21,7 @@ export class RequestDetailService {
     var msts = e;
     var details = e.details;
     var group = [];
-    var result = [];
+    // var result = [];
     delete msts.details;
     var hasil = _.chain(details)
       .flatten(true).groupBy("mst_supplier_id").each(function(d) { }).value();

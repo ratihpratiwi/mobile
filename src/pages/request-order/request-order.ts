@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, NgZone} from '@angular/core';
 import {RequestService} from '../../providers/request-service';
 import {RequestOrderDetailPagePage} from '../request-order-detail/request-order-detail';
 import { NavController, NavParams } from 'ionic-angular';

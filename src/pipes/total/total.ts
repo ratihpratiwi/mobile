@@ -1,10 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DashboardServiceProvider } from "../../providers/dashboard-service/dashboard-service"
+// import { DashboardServiceProvider } from "../../providers/dashboard-service/dashboard-service"
 @Pipe({
   name: 'total',
 })
 export class TotalPipe implements PipeTransform {
-  constructor(private dashboardServiceProvider: DashboardServiceProvider) { };
+  constructor() { };
   transform(data: any, column_name: any, args) {
     let sum = 0;
     if (data != null) {

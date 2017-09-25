@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {PocDetailService} from '../../providers/pocdetail-service';
 import {NavController, NavParams} from 'ionic-angular';
 import {PocPage} from "../poc/poc";

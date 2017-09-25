@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RequestDetailService } from "../../providers/request-detail-service";
-import { RequestOrderDetailPagePage } from "../request-order-detail/request-order-detail";
 @Component({
   selector: 'page-request-navigate',
   templateUrl: 'request-navigate.html',

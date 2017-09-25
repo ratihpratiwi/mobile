@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import * as moment from 'moment';
 import _ from 'underscore';
 /*
   Generated class for the ChartDataGenerator provider.
