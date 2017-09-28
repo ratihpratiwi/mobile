@@ -68,7 +68,7 @@
         "plugins": {
             "cordova-plugin-http": {},
             "phonegap-plugin-push": {
-                "SENDER_ID": "255829746459"
+                "SENDER_ID": "585010460811"
             },
             "cordova-plugin-fcm": {},
             "cordova-plugin-console": {},

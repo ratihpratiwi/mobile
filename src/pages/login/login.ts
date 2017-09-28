@@ -4,8 +4,8 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {LoginService} from '../../providers/login-service';
-import { AlertController } from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
+import {LoadingController} from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -29,17 +29,16 @@ export class LoginPage {
         this.storage.set("appToken", result.token);
         this.storage.set("user", result.user);
         this.navCtrl.push(TabsPage)
-        console.log(res)
+        console.log(localStorage.getItem("registerId"));
+        this.loginService.registerPushId(localStorage.getItem("registerId")).subscribe(res => {
+
+        });
+
       });
+
     }
-    // this.loginService.login(loginData).subscribe(res => {
-    //   let alert = this.alertCtrl.create({
-    //     title: "pesan: "+ res,
-    //     buttons: ['Cancel']
-    //   });
-    //   alert.present();
-    // })
-    }
+  }
+
   presentLoading() {
     this.loadingCtrl.create({
       content: 'Please wait...',
