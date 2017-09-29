@@ -1,34 +1,45 @@
 import {Component} from '@angular/core';
+import {Storage} from '@ionic/storage';
 import {Platform, AlertController} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {LoginPage} from "../pages/login/login";
+import {TabsPage} from "../pages/tabs/tabs";
 import {Push, PushObject, PushOptions} from '@ionic-native/push';
-declare var FCMPlugin;
+import {JwtHelper} from 'angular2-jwt';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage: any = LoginPage;
+  jwtHelper: JwtHelper = new JwtHelper();
+
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-              public alertCtrl: AlertController, public push: Push) {
+              public alertCtrl: AlertController, public push: Push, private storage: Storage) {
     platform.ready().then(() => {
       statusBar.styleDefault();
-      this.pushsetup();
+      this.pushsetup(this.storage);
       splashScreen.hide();
+      this.storage.get("appToken").then(token => {
+        if (token != null && !this.jwtHelper.isTokenExpired(token)) {
+
+          this.rootPage = TabsPage;
+        }
+      })
     });
   }
-   pushsetup() {
-     const options: PushOptions = {
-        android: {
-          senderID: '585010460811'
-        }
-        };
+
+  pushsetup(storage: Storage) {
+    const options: PushOptions = {
+      android: {
+        senderID: '585010460811'
+      }
+    };
 
     const pushObject: PushObject = this.push.init(options);
 
     pushObject.on('notification').subscribe((notification: any) => {
-      if (notification.additionalData.foreground){
+      if (notification.additionalData.foreground) {
         let alert = this.alertCtrl.create({
           title: 'Push Alert',
           message: notification.message
@@ -37,38 +48,13 @@ export class MyApp {
       }
     });
 
-    pushObject.on('registration').subscribe((registration: any) => alert('Device registered'+ registration));
 
-    pushObject.on('error').subscribe(error => alert('Error with Push plugin'+ error));
-    // FCMPlugin.getToken(
-    //   function (token) {
-    //     localStorage.setItem("registerId",token.toString());
-    //     console.log(localStorage.getItem("registerId"));
-    //     alert(token);
-    //   },
-    //   function (err) {
-    //     console.log('error retrieving token: ' + err);
-    //   }
-    // );
-    // FCMPlugin.onNotification(
-    //   function (data) {
-    //     console.log('notif masuk');
-    //     if (data.wasTapped) {
-    //
-    //       //Notification was received on device tray and tapped by the user.
-    //       alert(JSON.stringify(data));
-    //     } else {
-    //       //Notification was received in foreground. Maybe the user needs to be notified.
-    //       alert(JSON.stringify(data));
-    //     }
-    //   },
-    //   function (msg) {
-    //     console.log('onNotification callback successfully registered: ' + msg);
-    //   },
-    //   function (err) {
-    //     console.log('Error registering onNotification callback: ' + err);
-    //   }
-    // )
+    pushObject.on('registration').subscribe((token: any) => {
+      console.info(token.registrationId.toString());
+      this.storage.set("registerId", token.registrationId.toString());
+
+    });
+    pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
 
   }
 }

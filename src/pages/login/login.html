@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <form #form="ngForm" (ngSubmit)="loginHandler(data)">
+  <form #form="ngForm" (ngSubmit)="loginHandler(data,$event)">
     <ion-list>
       <ion-item>
         <ion-label fixed>Username</ion-label>
@@ -18,7 +18,7 @@
     </ion-list>
 
     <div padding>
-      <button name="submitBtn" ion-button color="primary" block type="submit" (click)="presentLoading()">Sign In</button>
+      <button name="submitBtn" ion-button color="primary" block type="submit">Sign In</button>
     </div>
   </form>
 

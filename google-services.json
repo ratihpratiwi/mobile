@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:585010460811:android:4eef543540645481",
+        "mobilesdk_app_id": "1:585010460811:android:753607a09854380c",
         "android_client_info": {
-          "package_name": "com.ionicframework.firebasepush218855"
+          "package_name": "com.precise.mountdreamsmobile"
         }
       },
       "oauth_client": [

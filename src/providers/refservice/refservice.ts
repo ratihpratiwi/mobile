@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import {UrlMasterProvider} from '../../providers/url-master/url-master';
+import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -8,7 +9,7 @@ export class RefserviceProvider {
   private headers = new Headers({ 'precise-token': UrlMasterProvider.token2 });
   private termUrl = UrlMasterProvider.urlAPI+'/master/reference/get_reference/';
   result: any;
-  constructor(private http: Http) {
+  constructor(private http: AuthHttp) {
 
   }
   getRef(id: number) {

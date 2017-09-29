@@ -30,7 +30,7 @@
         "@types/underscore": "^1.8.1",
         "angular2-jwt": "^0.2.3",
         "chart.js": "^2.6.0",
-        "cordova-android": "^6.2.2",
+        "cordova-android": "^6.2.3",
         "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-console": "1.0.5",
         "cordova-plugin-device": "1.1.4",

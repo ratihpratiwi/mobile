@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import _ from 'underscore';
 /*
@@ -11,7 +11,7 @@ import _ from 'underscore';
 @Injectable()
 export class ChartDataGenerator {
 
-  constructor(public http: Http) {
+  constructor(public http: AuthHttp) {
   }
 public  generateDataSeries(series:any, data:any, param:any, paramKey:any) {
     var dataArray = [];

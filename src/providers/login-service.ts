@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {AuthHttp} from 'angular2-jwt';
-import {Http, Headers} from '@angular/http';
+import {Http} from '@angular/http';
 import {UrlMasterProvider} from '../providers/url-master/url-master';
 @Injectable()
 export class LoginService {
-  private headers = new Headers({ 'precise-token': UrlMasterProvider.token1 });
-
   constructor(public authHttp: AuthHttp, public http: Http) {
   }
 
@@ -15,10 +13,9 @@ export class LoginService {
   };
 
   registerPushId(regId) {
-    console.log(regId)
-    return this.http.post(UrlMasterProvider.urlAPI + "/user/receive_reg_id", {"registerId": regId},{ headers: this.headers }).map(data => data.json().result);
+    console.info(this.authHttp);
+    return this.authHttp.post(UrlMasterProvider.urlAPI + "/user/receive_reg_id", {"registerId": regId}).map(data => data.json().result);
   }
-
 }
 
 

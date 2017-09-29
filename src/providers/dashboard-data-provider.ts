@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 /*
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DashboardDataProvider {
   public data: any = {};
-  constructor(public http: Http) {
+  constructor(public http: AuthHttp) {
     console.log('Hello DashboardDataProvider Provider');
     this.data = null;
   }

@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {UrlMasterProvider} from '../../providers/url-master/url-master';
+import {AuthHttp} from 'angular2-jwt';
 import * as _ from 'underscore/underscore';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DashboardServiceProvider {
-  private headers = new Headers({'precise-token': UrlMasterProvider.token1});
   private chartUrl = UrlMasterProvider.urlAPI + '/api/report/dashboard_tile/';
   private pengirimanUrl = UrlMasterProvider.urlAPI + '/api/report/dashboard_tile?query_type=pengiriman';
   private hargaRollUrl = UrlMasterProvider.urlAPI + '/api/report/dashboard_tile/monthly_roll?intervalMonth1=5&&intervalMonth2=5';
@@ -15,28 +15,28 @@ export class DashboardServiceProvider {
   public data: any;
   public produksi: any;
 
-  constructor(public http: Http) {
+  constructor(public http: AuthHttp) {
     this.data = null;
   }
 
   getDataDashboard() {
-    return this.http.get(this.chartUrl, {headers: this.headers}).map(data => data.json().result);
+    return this.http.get(this.chartUrl).map(data => data.json().result);
   }
 
   getDataPengiriman() {
-    return this.http.get(this.pengirimanUrl, {headers: this.headers}).map(data => data.json().result);
+    return this.http.get(this.pengirimanUrl).map(data => data.json().result);
   }
 
   getDataRoll() {
-    return this.http.get(this.hargaRollUrl, {headers: this.headers}).map(data => data.json().result);
+    return this.http.get(this.hargaRollUrl).map(data => data.json().result);
   }
 
   getDataOutstanding() {
-    return this.http.get(this.outstandingUrl, {headers: this.headers}).map(data => data.json().result);
+    return this.http.get(this.outstandingUrl).map(data => data.json().result);
   }
 
   getDataStock(){
-    return this.http.get(this.stockUrl, {headers: this.headers}).map(data => data.json().result);
+    return this.http.get(this.stockUrl).map(data => data.json().result);
   }
 
   generateData(dtItm, day, column_series, column_data, column_label) {

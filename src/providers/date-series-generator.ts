@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';
 @Injectable()
 export class DateSeriesGenerator {
 
-  constructor(public http: Http) {
+  constructor(public http: AuthHttp) {
     console.log('Hello DateSeriesGenerator Provider');
   }
   public generateDate(_startDate: any, _stopDate: any, intervalParam, formatParam: any) {
