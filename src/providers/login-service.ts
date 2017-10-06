@@ -16,6 +16,10 @@ export class LoginService {
     console.info(this.authHttp);
     return this.authHttp.post(UrlMasterProvider.urlAPI + "/user/receive_reg_id", {"registerId": regId}).map(data => data.json().result);
   }
+
+  refreshAuthToken(token){
+    return this.authHttp.get(UrlMasterProvider.urlAPI+"/login/refresh", token)
+  }
 }
 
 

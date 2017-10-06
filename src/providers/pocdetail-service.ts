@@ -6,7 +6,6 @@ import {UrlMasterProvider} from '../providers/url-master/url-master';
 
 @Injectable()
 export class PocDetailService {
-  private headers = new Headers({'precise-token': UrlMasterProvider.token2});
   private pocdetailUrl = UrlMasterProvider.urlAPI+'/api/sales/po_customer/';
   private savePocUrl = UrlMasterProvider.urlAPI+'/mobile/po_customer/';
   results: any;

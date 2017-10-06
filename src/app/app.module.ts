@@ -35,7 +35,6 @@ import {LaporanOutstandingPage} from "../pages/laporan-outstanding/laporan-outst
 import {PengirimanNavigatePage} from "../pages/pengiriman-navigate/pengiriman-navigate";
 import {PengirimanEksporPage} from '../pages/pengiriman-ekspor/pengiriman-ekspor';
 import {LoginPage} from '../pages/login/login';
-import {NotifPage} from '../pages/notif/notif';
 import {ProfilePage} from '../pages/profile/profile';
 //service
 import {LoginService} from '../providers/login-service';
@@ -49,7 +48,6 @@ import {ChartDataGenerator} from '../providers/chart-data-generator';
 import {DateSeriesGenerator} from '../providers/date-series-generator';
 import {UrlMasterProvider} from '../providers/url-master/url-master';
 import {ProfileProvider} from '../providers/profile/profile';
-import {NotifProvider} from '../providers/notif/notif';
 //pipe
 import {RefPipe} from '../pipes/ref/ref';
 import {CurrencyLabelPipe} from '../pipes/currency-label/currency-label';
@@ -60,16 +58,17 @@ import {TotalhppPipe} from '../pipes/totalhpp/totalhpp';
 //chart
 import {ChartsModule} from 'ng2-charts/ng2-charts';
 import {Push} from "@ionic-native/push";
+import { RolebaseProvider } from '../providers/rolebase/rolebase';
 
 
-declare var window;
+// declare var window;
 export class MyErrorHandler implements ErrorHandler {
   handleError(err: any): void {
-    window.Ionic.handleNewError(err);
+    // window.Ionic.handleNewError(err);
   }
 }
 export function getAuthHttp(http, storage, options: RequestOptions) {
-
+console.log("auth interceptor called")
   return new AuthHttp(new AuthConfig({
     headerName: 'precise-token',
     headerPrefix: " ",
@@ -91,7 +90,6 @@ export function getAuthHttp(http, storage, options: RequestOptions) {
     ChartStockBbPage, ChartProduksiHarianPage, ChartPengirimanLokalPage,
     ChartPengirimanEksporPage, LaporanPengirimanPage, ChartHargaRollPage, SalesNavigatePage,
     LaporanOutstandingPage, PengirimanNavigatePage, PengirimanEksporPage, LoginPage, ProfilePage,
-    NotifPage,
     RefPipe,
     CurrencyLabelPipe,
     SumPipe,
@@ -117,7 +115,7 @@ export function getAuthHttp(http, storage, options: RequestOptions) {
     LaporanProduksiPage, HppPage, ChartProduksiBulananPage, ChartProduksiHarianPage,
     ChartHppHarianPage, ChartHppBulananPage, ChartPengirimanLokalPage, ChartPengirimanEksporPage,
     ChartStockBbPage, LaporanPengirimanPage, ChartHargaRollPage, SalesNavigatePage, LaporanOutstandingPage,
-    PengirimanNavigatePage, PengirimanEksporPage, LoginPage, ProfilePage, NotifPage
+    PengirimanNavigatePage, PengirimanEksporPage, LoginPage, ProfilePage
   ],
   providers: [IonicStorageModule,
     StatusBar,
@@ -135,7 +133,7 @@ export function getAuthHttp(http, storage, options: RequestOptions) {
     ChartDataGenerator,
     DateSeriesGenerator,
     ProfileProvider,
-    NotifProvider
+    RolebaseProvider
   ]
 })
 export class AppModule {

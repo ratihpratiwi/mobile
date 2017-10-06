@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import {UrlMasterProvider} from '../providers/url-master/url-master';

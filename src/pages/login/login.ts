@@ -37,8 +37,10 @@ export class LoginPage {
         this.storage.clear();
         this.storage.set("appToken", result.token);
         this.storage.set("user", result.user);
+        this.storage.set("roles", result.user.roles);
         this.navCtrl.push(TabsPage)
         this.pushsetup(this.storage);
+        console.log(res.json())
       });
 
     }
@@ -67,7 +69,6 @@ export class LoginPage {
     pushObject.on('registration').subscribe((token: any) => {
       this.storage.set("registerId", token.registrationId.toString());
       this.loginService.registerPushId(token.registrationId.toString()).subscribe(res => {
-
       });
     });
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));

@@ -24,6 +24,7 @@ export class ProfilePage {
   logout(){
     this.storage.remove("appToken");
     this.storage.remove("user");
+    this.storage.remove("roles");
     this.nav.setRoot(LoginPage).then(()=> {
       this.nav.popToRoot()
     });

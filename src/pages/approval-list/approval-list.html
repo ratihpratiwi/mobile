@@ -6,14 +6,16 @@
 
 <ion-content class="has-header">
   <ion-list>
-    <ion-item (click)="openDetailPage()">
+    <ion-item (click)="openDetailPage()" *ngIf="roleRQO">
       <ion-avatar item-start>
         <img src="assets/img/person-flat.png">
+
       </ion-avatar>
       <h2>Approval Request Order Data </h2>
-      <span ion-button item-end class="badge badge-assertive" color="twitter" round>{{requestApprovalData?.length}}</span>
+      <span ion-button item-end class="badge badge-assertive" color="twitter"
+            round>{{requestApprovalData?.length}}</span>
     </ion-item>
-    <ion-item (click)="openDetailPage1()">
+    <ion-item (click)="openDetailPage1()" *ngIf="rolePOC">
       <ion-avatar item-start>
         <img src="assets/img/person-flat.png">
       </ion-avatar>
