@@ -7,7 +7,6 @@ import {LoginService} from '../../providers/login-service';
 import {AlertController} from 'ionic-angular';
 import {LoadingController} from 'ionic-angular';
 import {Push, PushObject, PushOptions} from '@ionic-native/push';
-
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -15,7 +14,6 @@ import {Push, PushObject, PushOptions} from '@ionic-native/push';
 export class LoginPage {
   data: any = {};
   msg: any;
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginService,
               private storage: Storage, public loadingCtrl: LoadingController, private push: Push, private alertCtrl: AlertController) {
     this.storage.get("registerId").then(data => {

@@ -61,22 +61,17 @@ import {Push} from "@ionic-native/push";
 import { RolebaseProvider } from '../providers/rolebase/rolebase';
 
 
-// declare var window;
 export class MyErrorHandler implements ErrorHandler {
   handleError(err: any): void {
-    // window.Ionic.handleNewError(err);
   }
 }
 export function getAuthHttp(http, storage, options: RequestOptions) {
-console.log("auth interceptor called")
   return new AuthHttp(new AuthConfig({
     headerName: 'precise-token',
     headerPrefix: " ",
     globalHeaders: [{'Accept': 'application/json'}],
     tokenGetter: (() => storage.get("appToken") )
   }), http, options);
-
-
 }
 
 @NgModule({

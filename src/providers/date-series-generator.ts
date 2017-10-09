@@ -6,7 +6,6 @@ import * as moment from 'moment';
 export class DateSeriesGenerator {
 
   constructor(public http: AuthHttp) {
-    console.log('Hello DateSeriesGenerator Provider');
   }
   public generateDate(_startDate: any, _stopDate: any, intervalParam, formatParam: any) {
 
