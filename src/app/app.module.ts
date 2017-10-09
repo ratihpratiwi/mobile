@@ -62,7 +62,8 @@ import { RolebaseProvider } from '../providers/rolebase/rolebase';
 
 
 export class MyErrorHandler implements ErrorHandler {
-  handleError(err: any): void {
+  handleError(err:any):void{
+
   }
 }
 export function getAuthHttp(http, storage, options: RequestOptions) {
