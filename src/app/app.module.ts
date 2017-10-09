@@ -62,7 +62,7 @@ import { RolebaseProvider } from '../providers/rolebase/rolebase';
 
 
 export class MyErrorHandler implements ErrorHandler {
- handleError(errr: any): void {
+ handleError(err: any): void {
 
  }
 }
