@@ -9,7 +9,6 @@ import {UrlMasterProvider} from '../providers/url-master/url-master';
 export class RequestDetailService {
   private requestdetailUrl = UrlMasterProvider.urlAPI + '/api/purchase/approval/approval_request_order?query_type=approval_rqo&trn_reqo_mst_id=';
   private saveUrl = UrlMasterProvider.urlAPI + '/mobile/request_order/save_approval/'
-  // private put(e: any) { }
   results: any;
 
   constructor(private http: AuthHttp) {
@@ -23,7 +22,6 @@ export class RequestDetailService {
     var msts = e;
     var details = e.details;
     var group = [];
-    // var result = [];
     delete msts.details;
     var hasil = _.chain(details)
       .flatten(true).groupBy("mst_supplier_id").each(function (d) {
@@ -44,7 +42,7 @@ export class RequestDetailService {
         });
       }
     )
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve) => {
       resolve(group);
     });
     var http1 = this.http;

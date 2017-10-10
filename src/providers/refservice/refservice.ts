@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class RefserviceProvider {
   private headers = new Headers({ 'precise-token': UrlMasterProvider.token2 });
-  private termUrl = UrlMasterProvider.urlAPI+'/master/reference/get_reference/';
+  private termUrl = UrlMasterProvider.urlAPI+'master/reference/get_reference/';
   result: any;
   constructor(private http: AuthHttp) {
 

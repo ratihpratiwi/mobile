@@ -6,7 +6,7 @@ import {UrlMasterProvider} from '../../providers/url-master/url-master';
 @Injectable()
 export class CurrencyLabelProvider {
   private headers = new Headers({ 'precise-token': UrlMasterProvider.token2});
-  private termUrl = UrlMasterProvider.urlAPI+'/master/reference/get_currency_name/';
+  private termUrl = UrlMasterProvider.urlAPI+'master/reference/get_currency_name/';
   result: any;
   constructor(private http: AuthHttp) {
 

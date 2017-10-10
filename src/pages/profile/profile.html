@@ -9,7 +9,7 @@
       <ion-col col-12>
         <img src="assets/img/images.png" class="profile-avatar-image" *ngIf="!user?.foto">
         <img [src]="user?.foto" class="profile-avatar-image" *ngIf="user?.foto">
-        <p class="card-title-md-light">{{user?.username}}</p>
+        <p class="card-title-md-light">{{user?.fullname}}</p>
         <h4 class="card-title-md-light">Manager</h4>
       </ion-col>
     </ion-row>
@@ -39,12 +39,12 @@
     </ion-avatar>
     <h3>{{user?.department_name}}</h3>
   </ion-item>
-  <ion-item>
-    <ion-avatar item-start>
-      <img src="assets/img/email.png">
-    </ion-avatar>
-    <h3>{{user?.iss}}</h3>
-  </ion-item>
+  <!--<ion-item>-->
+    <!--<ion-avatar item-start>-->
+      <!--<img src="assets/img/email.png">-->
+    <!--</ion-avatar>-->
+    <!--<h3>{{user?.iss}}</h3>-->
+  <!--</ion-item>-->
   <button ion-button color="primary" block (click)="logout()" *ngIf="!this.running">LogOut</button>
   <button ion-button color="primary" block (click)="logout()" *ngIf="this.running">LogOut</button>
 </ion-content>
