@@ -9,7 +9,7 @@
       <ion-col col-12>
         <img src="assets/img/images.png" class="profile-avatar-image" *ngIf="!user?.foto">
         <img [src]="user?.foto" class="profile-avatar-image" *ngIf="user?.foto">
-        <p class="card-title-md-light">{{user?.name}}</p>
+        <p class="card-title-md-light">{{user?.username}}</p>
         <h4 class="card-title-md-light">Manager</h4>
       </ion-col>
     </ion-row>
@@ -25,13 +25,13 @@
     <ion-avatar item-start>
       <img src="assets/img/card1.png">
     </ion-avatar>
-    <h3>{{user?.name}}</h3>
+    <h3>{{user?.username}}</h3>
   </ion-item>
   <ion-item>
     <ion-avatar item-start>
       <img src="assets/img/company.png">
     </ion-avatar>
-    <h3>{{user?.company_name}}</h3>
+    <h3>{{user?.company}}</h3>
   </ion-item>
   <ion-item>
     <ion-avatar item-start>
@@ -43,7 +43,7 @@
     <ion-avatar item-start>
       <img src="assets/img/email.png">
     </ion-avatar>
-    <h3>{{user?.email}}</h3>
+    <h3>{{user?.iss}}</h3>
   </ion-item>
   <button ion-button color="primary" block (click)="logout()" *ngIf="!this.running">LogOut</button>
   <button ion-button color="primary" block (click)="logout()" *ngIf="this.running">LogOut</button>
