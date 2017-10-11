@@ -11,6 +11,5 @@ export class RolebaseProvider {
   userRole() {
     return this.storage.get("roles");
   }
-
 }
 
