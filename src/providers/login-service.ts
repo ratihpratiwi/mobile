@@ -9,7 +9,7 @@ export class LoginService {
   }
 
   login(loginData) {
-    return this.http.post(UrlMasterProvider.urlAPI + "/login/auth", loginData);
+    return this.http.post(UrlMasterProvider.urlAPI + "login/auth", loginData);
   };
 
   registerPushId(regId) {

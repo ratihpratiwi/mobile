@@ -16,6 +16,7 @@ export class ApprovalListPage {
   role: any;
   rolePOC: boolean = false;
   roleRQO: boolean = false;
+  token1: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public requestService: RequestService,
               public pocService: PocService, private zone: NgZone, public rolebaseProvider: RolebaseProvider) {

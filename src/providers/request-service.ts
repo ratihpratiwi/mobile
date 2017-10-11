@@ -5,11 +5,10 @@ import {UrlMasterProvider} from '../providers/url-master/url-master';
 
 @Injectable()
 export class RequestService {
-  private requestUrl = UrlMasterProvider.urlAPI + '/api/purchase/approval/approval_request_order';
+  private requestUrl = UrlMasterProvider.urlAPI + 'api/purchase/approval/approval_request_order';
   results: any;
 
   constructor(private http: AuthHttp) {
-
   }
 
   getAllApprovalRequest() {

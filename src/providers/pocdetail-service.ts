@@ -13,7 +13,6 @@ export class PocDetailService {
   }
   getAllApprovalPocDetail(id) {
     return this.http.get(this.pocdetailUrl + id).map(data => data.json().result);
-
   }
   savePoc(p) {
     return this.http.put(this.savePocUrl + p.trn_po_cust_mst_id.toString(), p ).toPromise().then(res => res.json().data);
