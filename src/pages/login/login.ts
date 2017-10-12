@@ -1,6 +1,6 @@
 import {Storage} from '@ionic/storage';
 import 'rxjs/add/operator/map';
-import {Component} from '@angular/core';
+import {Component, NgZone} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {LoginService} from '../../providers/login-service';
@@ -15,14 +15,15 @@ export class LoginPage {
   data: any = {};
   msg: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginService,
-              private storage: Storage, public loadingCtrl: LoadingController, private push: Push, private alertCtrl: AlertController) {
+              private storage: Storage, public loadingCtrl: LoadingController, private push: Push,
+              private alertCtrl: AlertController, private zone: NgZone,) {
     this.storage.get("registerId").then(data => {
       console.info("registration id " + data);
     })
   }
 
   loginHandler(loginData, e) {
-
+    this.zone.run(() => {
     e.preventDefault();
     if (loginData != null) {
       this.loadingCtrl.create({
@@ -40,8 +41,8 @@ export class LoginPage {
         this.pushsetup(this.storage);
         console.log(res.json())
       });
-
     }
+  })
   }
 
   pushsetup(storage: Storage) {
