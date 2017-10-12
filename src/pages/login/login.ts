@@ -7,6 +7,7 @@ import {LoginService} from '../../providers/login-service';
 import {AlertController} from 'ionic-angular';
 import {LoadingController} from 'ionic-angular';
 import {Push, PushObject, PushOptions} from '@ionic-native/push';
+import {error} from "util";
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -32,6 +33,11 @@ export class LoginPage {
         dismissOnPageChange: true
       }).present();
       this.loginService.login(loginData).subscribe(res => {
+          let alert = this.alertCtrl.create({
+            title: 'test error' +res.toString(),
+            buttons: ['Ok']
+          });
+          alert.present();
         var result = res.json();
         this.storage.clear();
         this.storage.set("appToken", result.token);
@@ -42,7 +48,7 @@ export class LoginPage {
         console.log(res.json())
       });
     }
-  })
+    })
   }
 
   pushsetup(storage: Storage) {
@@ -71,6 +77,6 @@ export class LoginPage {
       });
     });
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
-
   }
+
 }
