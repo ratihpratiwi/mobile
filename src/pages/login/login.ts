@@ -7,7 +7,6 @@ import {LoginService} from '../../providers/login-service';
 import {AlertController} from 'ionic-angular';
 import {LoadingController} from 'ionic-angular';
 import {Push, PushObject, PushOptions} from '@ionic-native/push';
-import {error} from "util";
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
