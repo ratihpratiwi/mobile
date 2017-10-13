@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { DashboardServiceProvider } from '../../providers/dashboard-service/dashboard-service';
 import { LaporanProduksiPage } from "../../pages/laporan-produksi/laporan-produksi";
 import { PengirimanNavigatePage } from "../../pages/pengiriman-navigate/pengiriman-navigate";
+import {LoadingController} from 'ionic-angular';
 import { HppPage } from "../../pages/hpp/hpp";
 import { SalesNavigatePage } from "../../pages/sales-navigate/sales-navigate";
 import { ChartStockBbPage } from "../../pages/chart-stock-bb/chart-stock-bb";
@@ -16,7 +17,7 @@ import {LoginService} from '../../providers/login-service';
 export class DashboardMenuPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dashboardServiceProvider: DashboardServiceProvider,
-              private storage: Storage, public loginService: LoginService) { }
+              private storage: Storage, public loginService: LoginService, public loadingCtrl: LoadingController) { }
 
   public openDetailPageProduksi(): void {
     this.navCtrl.push(LaporanProduksiPage);
@@ -34,10 +35,7 @@ export class DashboardMenuPage {
     this.navCtrl.push(PengirimanNavigatePage);
   }
   loginHandler(loginData) {
-
     if (loginData != null) {
-
-      console.log(loginData)
       this.loginService.login(loginData).subscribe(res => {
         var result = res.json();
         this.storage.set("appToken", result.token);
@@ -51,6 +49,13 @@ export class DashboardMenuPage {
 
       });
     }
+  }
+  presentloading(){
+      this.loadingCtrl.create({
+        content: 'Please wait...',
+        duration: 3000,
+        dismissOnPageChange: true
+      }).present();
   }
   logout(){
     this.storage.remove("appToken");

@@ -2,6 +2,7 @@ import {Component, NgZone} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {RequestOrderPagePage} from "../request-order/request-order";
 import {PocPage} from "../poc/poc";
+import {LoadingController} from 'ionic-angular';
 import {RequestService} from '../../providers/request-service';
 import {PocService} from '../../providers/poc-service';
 import {RolebaseProvider} from '../../providers/rolebase/rolebase';
@@ -19,7 +20,7 @@ export class ApprovalListPage {
   token1: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public requestService: RequestService,
-              public pocService: PocService, private zone: NgZone, public rolebaseProvider: RolebaseProvider) {
+              public pocService: PocService, private zone: NgZone, public rolebaseProvider: RolebaseProvider, public loadingCtrl: LoadingController) {
   }
 
   ionViewWillEnter() {
@@ -46,6 +47,13 @@ export class ApprovalListPage {
         return "APPROVAL_REQUEST_ORDER" === item;
       });
     })
+  }
+  presentloading(){
+    this.loadingCtrl.create({
+      content: 'Please wait...',
+      duration: 3000,
+      dismissOnPageChange: true
+    }).present();
   }
 
   public openDetailPage() {

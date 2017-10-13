@@ -6,7 +6,7 @@
 
 <ion-content class="has-header">
   <ion-list>
-    <ion-item (click)="openDetailPage()" *ngIf="roleRQO">
+    <ion-item (click)="openDetailPage()" (click)="presentloading()" *ngIf="roleRQO">
       <ion-avatar item-start>
         <img src="assets/img/person-flat.png">
 
@@ -15,7 +15,7 @@
       <span ion-button item-end class="badge badge-assertive" color="twitter"
             round>{{requestApprovalData?.length}}</span>
     </ion-item>
-    <ion-item (click)="openDetailPage1()" *ngIf="rolePOC">
+    <ion-item (click)="openDetailPage1()" (click)="presentloading()" *ngIf="rolePOC">
       <ion-avatar item-start>
         <img src="assets/img/person-flat.png">
       </ion-avatar>

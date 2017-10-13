@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {DashboardServiceProvider} from '../../providers/dashboard-service/dashboard-service';
+import {LoadingController} from 'ionic-angular';
 import {ChartProduksiHarianPage} from "../../pages/chart-produksi-harian/chart-produksi-harian";
 import {ChartProduksiBulananPage} from "../../pages/chart-produksi-bulanan/chart-produksi-bulanan";
 import * as _ from 'underscore/underscore';
@@ -12,7 +13,8 @@ export class LaporanProduksiPage {
   produksi: any;
   produksi_blnan: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dashboardServiceProvider: DashboardServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dashboardServiceProvider: DashboardServiceProvider,
+              public loadingCtrl: LoadingController) {
   }
 
   ngOnInit(): void {
@@ -41,6 +43,14 @@ export class LaporanProduksiPage {
       })
     })
 
+  }
+
+  presentloading(){
+    this.loadingCtrl.create({
+      content: 'Please wait...',
+      duration: 3000,
+      dismissOnPageChange: true
+    }).present();
   }
 
   public openDetailPage1(): void {

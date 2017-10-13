@@ -1,4 +1,4 @@
-import {Component, NgZone} from '@angular/core';
+import {Component, NgZone} from '@angular/core'
 import {ProfilePage} from '../profile/profile';
 import {DashboardMenuPage} from '../dashboard-menu/dashboard-menu';
 import {ApprovalListPage} from "../approval-list/approval-list";
