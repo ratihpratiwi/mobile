@@ -32,6 +32,7 @@ export class LoginPage {
         dismissOnPageChange: true
       }).present();
       this.loginService.login(loginData).subscribe(res => {
+        console.log(res)
           let alert = this.alertCtrl.create({
             title: 'test error' +res.toString(),
             buttons: ['Ok']
