@@ -14,40 +14,42 @@ import {Push, PushObject, PushOptions} from '@ionic-native/push';
 export class LoginPage {
   data: any = {};
   msg: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginService,
               private storage: Storage, public loadingCtrl: LoadingController, private push: Push,
               private alertCtrl: AlertController, private zone: NgZone,) {
+
     this.storage.get("registerId").then(data => {
-      console.info("registration id " + data);
+      console.log("registerId" + data)
     })
   }
 
   loginHandler(loginData, e) {
     this.zone.run(() => {
-    e.preventDefault();
-    if (loginData != null) {
-      this.loadingCtrl.create({
-        content: 'Please wait...',
-        duration: 3000,
-        dismissOnPageChange: true
-      }).present();
-      this.loginService.login(loginData).subscribe(res => {
-        console.log(res)
+      e.preventDefault();
+      if (loginData != null) {
+        this.loadingCtrl.create({
+          content: 'Loading Please wait...',
+          duration: 3000,
+          dismissOnPageChange: true
+        }).present();
+        this.loginService.login(loginData).subscribe(res => {
+          console.log(res)
           let alert = this.alertCtrl.create({
-            title: 'test error' +res.toString(),
+            title: 'test error' + res.toString(),
             buttons: ['Ok']
           });
           alert.present();
-        var result = res.json();
-        this.storage.clear();
-        this.storage.set("appToken", result.token);
-        this.storage.set("user", result.user);
-        this.storage.set("roles", result.user.roles);
-        this.navCtrl.push(TabsPage)
-        this.pushsetup(this.storage);
-        console.log(res.json())
-      });
-    }
+          var result = res.json();
+          this.storage.clear();
+          this.storage.set("appToken", result.token);
+          this.storage.set("user", result.user);
+          this.storage.set("roles", result.user.roles);
+          this.navCtrl.push(TabsPage)
+          this.pushsetup(this.storage);
+          console.log(res.json())
+        });
+      }
     })
   }
 
@@ -69,7 +71,6 @@ export class LoginPage {
         alert.present();
       }
     });
-
 
     pushObject.on('registration').subscribe((token: any) => {
       this.storage.set("registerId", token.registrationId.toString());

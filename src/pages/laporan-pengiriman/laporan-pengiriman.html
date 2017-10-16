@@ -8,12 +8,12 @@
 
 
 <ion-content class="card-background-page">
-  <ion-card (click)="openDetailPage()" *ngFor="let item of pengiriman">
+  <ion-card (click)="openDetailPage()" (click)=" presentloading()" *ngFor="let item of pengiriman">
     <img src="assets/img/paper.jpg"/>
     <div class="card-title">Total Quantity {{item.company_name}}</div>
     <div class="card-subtitle">{{item.data|total:'delivery_quantity'|async}} ton</div>
   </ion-card>
-  <ion-card (click)="openDetailPage()"*ngFor="let item of pengiriman">
+  <ion-card (click)="openDetailPage()" (click)=" presentloading()" *ngFor="let item of pengiriman">
     <img src="assets/img/paper.jpg"/>
     <div class="card-title">Rata - rata Harga {{item.company_name}}</div>
     <div class="card-subtitle">{{item.data|totalhpp:'avg':'delivery_quantity'|async}} ton</div>

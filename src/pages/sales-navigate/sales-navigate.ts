@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {LoadingController} from 'ionic-angular';
 import {DashboardServiceProvider} from '../../providers/dashboard-service/dashboard-service';
 import {LaporanOutstandingPage} from "../../pages/laporan-outstanding/laporan-outstanding";
 import { ChartHargaRollPage } from "../../pages/chart-harga-roll/chart-harga-roll";
@@ -11,7 +12,8 @@ import * as _ from 'underscore/underscore';
 export class SalesNavigatePage {
   avg_price_bulanan: any;
   outstanding: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dashboardServiceProvider: DashboardServiceProvider) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dashboardServiceProvider: DashboardServiceProvider,
+              public loadingCtrl: LoadingController) {}
   ngOnInit(): void{
     this.dashboardServiceProvider.getDataOutstanding().subscribe(res => {
       this.outstanding =res;
@@ -28,12 +30,23 @@ export class SalesNavigatePage {
         this.avg_price_bulanan = avg_price_bulanan;
       })
     })
-
-
   }
-
-
-
+  presentloading(){
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+    }); loading.present();
+    setTimeout(()=>{
+      loading.dismiss();
+    }, 5000);
+  }
+  presentloading2(){
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+    }); loading.present();
+    setTimeout(()=>{
+      loading.dismiss();
+    }, 5000);
+  }
   public openDetailPage1(): void {
     this.navCtrl.push(ChartHargaRollPage);
   }

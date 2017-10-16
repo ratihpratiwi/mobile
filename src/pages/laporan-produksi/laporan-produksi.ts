@@ -46,11 +46,12 @@ export class LaporanProduksiPage {
   }
 
   presentloading(){
-    this.loadingCtrl.create({
+    const loading = this.loadingCtrl.create({
       content: 'Please wait...',
-      duration: 3000,
-      dismissOnPageChange: true
-    }).present();
+    }); loading.present();
+    setTimeout(()=>{
+      loading.dismiss();
+    }, 4000);
   }
 
   public openDetailPage1(): void {

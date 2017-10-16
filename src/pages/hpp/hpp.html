@@ -4,12 +4,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
-  <ion-card (click)="openDetailPage1()" *ngFor="let item of hpp">
+  <ion-card (click)="openDetailPage1()" (click)="presentloading()" *ngFor="let item of hpp">
     <img src="assets/img/paper.jpg"/>
     <div class="card-title">Total HPP Harian {{item?.company}}</div>
     <div class="card-subtitle">{{item.data|totalhpp:'hpp':'tonase'|async}} ton</div>
   </ion-card>
-  <ion-card (click)="openDetailPage2()" *ngFor="let item1 of hppBulanan">
+  <ion-card (click)="openDetailPage2()" (click)="presentloading()" *ngFor="let item1 of hppBulanan">
     <img src="assets/img/paper.jpg"/>
     <div class="card-title">Total HPP Bulanan {{item1.company}}</div>
     <div class="card-subtitle">{{item1.data1|totalhpp:'hpp':'total_weight'|async}} ton</div>

@@ -48,12 +48,15 @@ export class ApprovalListPage {
       });
     })
   }
-  presentloading(){
-    this.loadingCtrl.create({
-      content: 'Please wait...',
-      duration: 3000,
-      dismissOnPageChange: true
-    }).present();
+
+  presentloading() {
+    const loading = this.loadingCtrl.create({
+      content: 'Loading Please wait...',
+    });
+    loading.present();
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1000);
   }
 
   public openDetailPage() {
