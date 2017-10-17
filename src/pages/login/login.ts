@@ -29,7 +29,7 @@ export class LoginPage {
       e.preventDefault();
       if (loginData != null) {
         this.loadingCtrl.create({
-          content: 'Loading Please wait...',
+          content: 'Please wait...',
           duration: 3000,
           dismissOnPageChange: true
         }).present();

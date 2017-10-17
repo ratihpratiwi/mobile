@@ -46,6 +46,7 @@
         "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-http": "^1.2.0",
         "cordova-plugin-ionic": "^1.1.9",
+        "cordova-plugin-network-information": "^1.3.3",
         "cordova-plugin-splashscreen": "~4.0.1",
         "cordova-plugin-statusbar": "2.2.2",
         "cordova-plugin-whitelist": "1.3.1",
@@ -93,7 +94,8 @@
                 "UPDATE_METHOD": "background",
                 "MAX_STORE": "2"
             },
-            "cordova-plugin-android-permissions": {}
+            "cordova-plugin-android-permissions": {},
+            "cordova-plugin-network-information": {}
         },
         "platforms": [
             "android"
