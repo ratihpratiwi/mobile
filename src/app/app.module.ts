@@ -58,13 +58,13 @@ import {TotalhppPipe} from '../pipes/totalhpp/totalhpp';
 //chart
 import {ChartsModule} from 'ng2-charts/ng2-charts';
 import {Push} from "@ionic-native/push";
-import { RolebaseProvider } from '../providers/rolebase/rolebase';
+import {RolebaseProvider} from '../providers/rolebase/rolebase';
 
 
 export class MyErrorHandler implements ErrorHandler {
- handleError(err: any): void {
+  handleError(err: any): void {
 
- }
+  }
 }
 export function getAuthHttp(http, storage, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -72,7 +72,7 @@ export function getAuthHttp(http, storage, options: RequestOptions) {
     headerPrefix: " ",
     globalHeaders: [{'Accept': 'application/json'}],
     tokenGetter: (() => storage.get("appToken") )
-  }), http, options);
+  }),http, options);
 }
 
 @NgModule({
